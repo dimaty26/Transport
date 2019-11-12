@@ -1,0 +1,32 @@
+version: '2'
+services:
+  database:
+      image: postgres:9.5
+      ports:
+        - "5432:5432"
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=p0stgr@s
+        - POSTGRES_DB=postgres
+  transportservice:
+      image: transporteye/transportservice:alpha
+      ports:
+        - "8085:8085"
+      environment:
+        PROFILE: "default"
+        SERVER_PORT: "8085"
+        DATABASE_PORT: 5432
+  authenticationservice:
+      image: transporteye/authenticationservice:alpha
+      ports:
+        - "8901:8901"
+      environment:
+        PROFILE: "default"
+        SERVER_PORT: "8901"
+        DATABASE_PORT: 5432
+  frontendservice:
+      image: transporteye/frontendservice:alpha
+      ports:
+        - "80:80"
+      volumes:
+      - "../../frontend-service/src/main/web:/usr/share/nginx/html:ro"

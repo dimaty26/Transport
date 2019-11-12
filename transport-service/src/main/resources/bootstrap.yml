@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: transport-service
+  profiles:
+    active:
+      default

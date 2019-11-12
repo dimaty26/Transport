@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>NC TEST ONE</title>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="css/style.css">
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=3d8e5fc5-c0a7-4553-ac51-f1bcd9110a94" type="text/javascript"></script>
+<script type="text/javascript" src="js/mainman.js"></script>
+<body>
+	
+	<!-- Sidebar/menu -->
+	<nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding"
+		style="z-index: 3; width: 300px; font-weight: bold;" id="mySidebar">
+		<br> <a href="javascript:void(0)" onclick="w3_close()"
+			class="w3-button w3-hide-large w3-display-topleft"
+			style="width: 100%; font-size: 22px">Закрыть меню</a>
+		<div class="w3-container">
+			<h3 class="w3-padding-64">
+				<b>Netcracker<br>Test One
+				</b>
+			</h3>
+		</div>
+		<div class="w3-bar-block">
+			<a href="#" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Главная</a> <a
+				href="#auth" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Авторизация</a> <a
+				href="#designers" onclick="w3_close()"
+				class="w3-bar-item w3-button w3-hover-white">Контакты</a>
+		</div>
+	</nav>
+	
+	<!-- Top menu on small screens -->
+	<header
+		class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+		<a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right"
+			onclick="w3_open()">☰</a> <span>NetCracker</span>
+	</header>
+	
+	<!-- Overlay effect when opening sidebar on small screens -->
+	<div class="w3-overlay w3-hide-large" onclick="w3_close()"
+		style="cursor: pointer" title="close side menu" id="myOverlay"></div>
+
+	<!-- !PAGE CONTENT! -->
+	<div class="w3-main" style="margin-left: 340px; margin-right: 40px">
+
+		<!-- Header -->
+		<div class="w3-container" style="margin-top: 30px"
+			id="showcase">
+			<h1 class="w3-jumbo">
+				<b>Тестовый пример</b>
+			</h1>
+			<h1 class="w3-xxxlarge w3-text-blue">
+				<b>Весь транспорт на карте</b>
+			</h1>
+			<hr style="width: 50px; border: 5px solid blue" class="w3-round">
+			<form class="w3-container">
+				<button type='button' class="w3-btn w3- w3-blue" onclick="req()">Отобразить</button>
+			</form>
+			<details style="margin-top: 30px" value="Карта" id="mapspoiler" class="w3-container">
+				<summary>Карта</summary>
+				<div class="w3-container" id="map"></div>
+			</details>
+		</div>
+
+		<!-- Auth -->
+		<div class="w3-container" id="auth" style="margin-top: 75px">
+			<h1 class="w3-xxxlarge w3-text-blue">
+				<b>Авторизация</b>
+			</h1>
+			<hr style="width: 50px; border: 5px solid blue" class="w3-round">
+			<form class="w3-container">
+
+				<input id="login" value="john.doe" class="w3-input w3-text-blue" type="text">
+				<label>Логин</label> 
+				<input id="pass" value="userpass" class="w3-input w3-text-blue" type="text"> 
+				<label>Пароль</label> <br />
+				<br />
+				<br />
+				<button type='button' onclick="auth()" class="w3-btn w3-blue">Войти</button>
+				<button type='button' onclick="check()" class="w3-btn w3-blue">Проверить токен</button>
+			</form>
+			<p style="margin-left: 15px" id="token">Token: ...</p>
+		</div>
+
+		<!-- Results -->
+		<div class="w3-container" id="results" style="margin-top: 75px">
+			<h1 class="w3-xxxlarge w3-text-blue">
+				<b>Результат</b>
+			</h1>
+			<hr style="width: 50px; border: 5px solid blue" class="w3-round">
+			<p id="resout"></p>
+		</div>
+
+		<div class="w3-row-padding">
+			<div class="w3-half w3-margin-bottom">
+				<ul class="w3-ul w3-light-grey w3-center">
+					<li class="w3-dark-grey w3-xlarge w3-padding-32">Request</li>
+					<li class="w3-padding-16"><p id="req-headers">header</p></li>
+					<li class="w3-padding-16"><p id="req-body">body
+						<p></li>
+				</ul>
+			</div>
+
+			<div class="w3-half">
+				<ul class="w3-ul w3-light-grey w3-center">
+					<li class="w3-blue w3-xlarge w3-padding-32">Response</li>
+					<li class="w3-padding-16"><p id="resp-headers">header</p></li>
+					<li class="w3-padding-16"><p id="resp-body">body
+						<p></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Designers -->
+		<div class="w3-container" id="designers" style="margin-top: 75px">
+			<h1 class="w3-xxxlarge w3-text-blue">
+				<b>Контакты</b>
+			</h1>
+			<hr style="width: 50px; border: 5px solid blue" class="w3-round">
+			<p>Netcracker rookie team</p>
+			<p>
+				<b>Состав</b>:
+			</p>
+		</div>
+
+		<!-- The Team -->
+		<div class="w3-row-padding w3-grayscale">
+			<div class="w3-col m4 w3-margin-bottom">
+				<div class="w3-light-grey">
+					<img
+						src="https://pp.userapi.com/yefHzziQQgLoc_m_4fVa2eAlCs7rETW0zJUNdw/KnePTVnNWCA.jpg"
+						alt="Федор" style="width: 100%">
+					<div class="w3-container">
+						<h3>Федор Гурьянов</h3>
+						<p class="w3-opacity">CEO & Founder</p>
+						<p>Netcracker</p>
+					</div>
+				</div>
+			</div>
+			<div class="w3-col m4 w3-margin-bottom">
+				<div class="w3-light-grey">
+					<img
+						src="https://pp.userapi.com/c844320/v844320951/172cd7/VUdsWHv34mY.jpg"
+						alt="Дмитрий" style="width: 100%">
+					<div class="w3-container">
+						<h3>Дмитрий Файчук</h3>
+						<p class="w3-opacity">Fullstack Java Champion.</p>
+						<p>РТУ МИРЭА</p>
+					</div>
+				</div>
+			</div>
+			<div class="w3-col m4 w3-margin-bottom">
+				<div class="w3-light-grey">
+					<img
+						src="https://pp.userapi.com/c850220/v850220046/e8cf1/2nXCc65SaaI.jpg"
+						alt="Дмитрий" style="width: 100%">
+					<div class="w3-container">
+						<h3>Аня DMGh</h3>
+						<p class="w3-opacity">Chief Technology officer</p>
+						<p>РТУ МИРЭА</p>
+					</div>
+				</div>
+			</div>
+			<div class="w3-col m4 w3-margin-bottom">
+				<div class="w3-light-grey">
+					<img
+						src="https://pp.userapi.com/c849136/v849136363/c89f9/2toimzAgjBw.jpg"
+						alt="Дмитрий" style="width: 100%">
+					<div class="w3-container">
+						<h3>Дмитрий Змеевский</h3>
+						<p class="w3-opacity">Java enthusiast.</p>
+						<p>BMSTU</p>
+					</div>
+				</div>
+			</div>
+			<div class="w3-col m4 w3-margin-bottom">
+				<div class="w3-light-grey">
+					<img
+						src="https://pp.userapi.com/c850324/v850324444/10223d/mW28q3Uw1tg.jpg"
+						alt="Дмитрий" style="width: 100%">
+					<div class="w3-container">
+						<h3>Тимофей Попов</h3>
+						<p class="w3-opacity">CIO</p>
+						<p>SOme text/p>
+					</div>
+				</div>
+			</div>
+
+			<!-- End page content -->
+		</div>
+
+		<!-- W3.CSS Container -->
+		<div class="w3-light-grey w3-container w3-padding-32"
+			style="margin-top: 75px; padding-right: 58px">
+			<p class="w3-right">
+				Powered by <a href="https://www.w3schools.com/w3css/default.asp"
+					title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a>
+			</p>
+		</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: authenticationservice
+  profiles:
+    active:
+      default
